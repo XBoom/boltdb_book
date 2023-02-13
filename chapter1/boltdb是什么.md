@@ -8,6 +8,8 @@
   fast, and reliable database for projects that don't require a full database
   server such as Postgres or MySQL.
 
+Question: 如何实现可靠的，不需要一个完整的数据库服务，其实就是能生成文件极客
+
 >  Since Bolt is meant to be used as such a low-level piece of functionality,
   simplicity is key. The API will be small and only focus on getting values
   and setting values. That's it.
@@ -22,9 +24,17 @@
 
 **支持事务：** boltdb数据库支持两类事务：**读写事务**、**只读事务**。这一点就和其他kv数据库有很大区别。
 
+​     Question: 如何实现 **读写事务** 与**读写事务**
+
 **文件型：** boltdb所有的数据都是存储在磁盘上的，所以它属于文件型数据库。这里补充一下个人的理解，在某种维度来看，boltdb很像一个简陋版的innodb存储引擎。底层数据都存储在文件上，同时数据都涉及数据在内存和磁盘的转换。但不同的是，innodb在事务上的支持比较强大。
+
+​	Question: innodb 与 boltdb 的区别
 
 **单机：** boltdb不是分布式数据库，它是一款单机版的数据库。个人认为比较适合的场景是，用来做wal日志或者读多写少的存储场景。
 
-**kv数据库：** boltdb不是sql类型的关系型数据库，它和其他的kv组件类似，对外暴露的是kv的接口，不过boltdb支持的数据类型key和value都是[]byte。
+​	Question: 分布式数据库有哪些，如何实现的 wal日志？？？？
+
+**kv数据库：** boltdb不是sql类型的关系型数据库，它和其他的kv组件类似，对外暴露的是kv的接口，不过boltdb**支持的数据类型key和value都是[]byte**。
+
+​	Question: 是否有长度限制？，不同长度的数据是如何存储的
 
